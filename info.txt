@@ -1,0 +1,2 @@
+#Pour se rendre sur la page administration des données
+http://localhost/box-racing-v2/public/index.php/admin/
