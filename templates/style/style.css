@@ -1531,7 +1531,7 @@ h1, h2, h3, h4, h5,
   @media (max-width: 991.98px) {
     .scissors {
       font-size: 2rem; } }
-  .scissors:after {
+  /*.scissors:after {
     bottom: 0;
     left: 0;
     font-size: 22px;
@@ -1540,12 +1540,12 @@ h1, h2, h3, h4, h5,
     position: absolute;
     color: #ccc; }
   .scissors.primary-color-icon:after {
-    color: #dc3545; }
-  .scissors.text-center:after {
+    color: #dc3545; }*/
+  /*.scissors.text-center:after {
     left: 50%;
     -webkit-transform: translateX(-50%);
     -ms-transform: translateX(-50%);
-    transform: translateX(-50%); }
+    transform: translateX(-50%); }*/
 
 .nonloop-block-13 .owl-nav {
   display: none; }

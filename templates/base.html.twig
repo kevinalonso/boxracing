@@ -43,27 +43,6 @@
         {% endblock %}
     </head>
     <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
-    	<!-- Navigation -->
-		<!--<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-			<div class="container">
-			  <a class="navbar-brand" href="{{ path('index') }}"><img id="logo-nav" class="img-responsive" style="width:8%;" src="http://localhost/boxracing/templates/images/logo-ruban.png"/></a>
-			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-			    <span class="navbar-toggler-icon"></span>
-			  </button>
-			  <div class="collapse navbar-collapse" id="navbarResponsive">
-			    <ul class="navbar-nav ml-auto">
-			      <li class="nav-item active">
-			        <a class="nav-link" href="{{ path('index') }}">Accueil
-			          <span class="sr-only">(current)</span>
-			        </a>
-			      </li>
-			      <li class="nav-item">
-			        <a class="nav-link" href="{{ path('contact') }}">Contact</a>
-			      </li>
-			    </ul>
-			  </div>
-			</div>
-		</nav>-->
 
 		<div class="site-wrap" id="home-section">
 
@@ -96,15 +75,17 @@
 			            	<nav class="site-navigation text-right ml-auto d-none d-lg-block" role="navigation">
 				                <ul class="site-menu main-menu js-clone-nav ml-auto ">
 				                  <li class="active"><a href="{{ path('index') }}" class="nav-link">Accueil</a></li>
-				                  {% for category in categories %}
-						              {% if category.IsActive %}
-						                {% if category.IsStatic %}
-						                  <li><a href="{{ path('static', {'id': category.id}) }}" class="nav-link">{{category.Name}}</a></li>
-						                {% else %}
-						                  <li><a href="{{ path('category', {'id': category.id}) }}" class="nav-link">{{category.Name}}</a></li>
-						                {% endif %}
-						              {% endif %}
-						          {% endfor %}
+				                  {% if categories|default %}
+					                  {% for category in categories %}
+							              {% if category.IsActive %}
+							                {% if category.IsStatic %}
+							                  <li><a href="{{ path('static', {'id': category.id}) }}" class="nav-link">{{category.Name}}</a></li>
+							                {% else %}
+							                  <li><a href="{{ path('category', {'id': category.id}) }}" class="nav-link">{{category.Name}}</a></li>
+							                {% endif %}
+							              {% endif %}
+							          {% endfor %}
+						      		{% endif %}
 				                  <li><a href="{{ path('contact') }}" class="nav-link">Contact</a></li>
 				                </ul>
 				             </nav>
@@ -136,7 +117,7 @@
 		        <div class="container">
 		          <div class="row">
 		            <div class="col-lg-3">
-		              <img src="images/img_1.jpg" alt="Image" class="img-fluid mb-5">
+		              <img src="http://localhost/boxracing/templates/images/boxracing.png" alt="Image" class="img-fluid mb-5">
 		              <h2 class="footer-heading mb-3">Qui sommes nous ?</h2>
 		                  <p>BoxRacing est un garage moto fondé en 2016. Spécialisé dans la préparation moto, entretien et réparation. Nous vous conseillerons au mieu afin de vous satisfaire </p>
 		            </div>
@@ -145,19 +126,21 @@
 		                <div class="col-lg-6 ml-auto">
 		                  <h2 class="footer-heading mb-4">Liens rapides</h2>
 		                  <ul class="list-unstyled">
-		                    {% for category in categories %}
-				              {% if category.IsActive %}
-				                {% if category.IsStatic %}
-				                  <li><a href="{{ path('static', {'id': category.id}) }}" class="nav-link">{{category.Name}}</a></li>
-				                {% else %}
-				                  <li><a href="{{ path('category', {'id': category.id}) }}" class="nav-link">{{category.Name}}</a></li>
-				                {% endif %}
-				              {% endif %}
-				          	{% endfor %}
+		                  	{% if categories|default %}
+			                    {% for category in categories %}
+					              {% if category.IsActive %}
+					                {% if category.IsStatic %}
+					                  <li><a href="{{ path('static', {'id': category.id}) }}" class="nav-link">{{category.Name}}</a></li>
+					                {% else %}
+					                  <li><a href="{{ path('category', {'id': category.id}) }}" class="nav-link">{{category.Name}}</a></li>
+					                {% endif %}
+					              {% endif %}
+					          	{% endfor %}
+				          	{% endif %}
 		                  </ul>
 		                </div>
 		                <div class="col-lg-6">
-		                  <h2 class="footer-heading mb-4">Newsletter</h2>
+		                  <h2 class="footer-heading mb-4">Réseaux sociaux</h2>
 		                  
 		                    <a class="btn btn-social-icon btn-facebook" href="https://www.facebook.com/Box-Racing-1582216218709761/?ref=br_rs">
 								<span class="fa fa-facebook"></span>
