@@ -19,6 +19,8 @@ class CategoryController extends AbstractController
 
     	$announcements = $this->getDoctrine()->getRepository(Announcement::class)
             ->getAnnoucementFromCategory($id);
+        $categories = $this->getDoctrine()->getRepository(Category::class)
+            ->allCategories();
 
         if ($announcements != null) {
 
@@ -30,13 +32,15 @@ class CategoryController extends AbstractController
             return $this->render('category.html.twig', [
                 'announcements' => $announcements,
                 'titleCat' => $catName,
-                'cat'=>$cat[0]->getId()
+                'cat'=>$cat[0]->getId(),
+                'categories' => $categories
             ]);
 
         } else {
             return $this->render('category.html.twig', [
                 'announcements' => $announcements,
-                'titleCat' => 'Pas de motos d\'occasion en vente pour le moment'
+                'titleCat' => 'Pas de motos d\'occasion en vente pour le moment',
+                'categories' => $categories
             ]);
         }
         
