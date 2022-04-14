@@ -15,61 +15,65 @@
       </div>
     </div>
 
-	<div class="row container col-12 ml-1">
-		
-		<div class="">
-			<h2 class="brand">Filtrer</h2>
-		</div>
+    <div class="site-section">
+    	 <div class="container">
+    	 	<div class="row mb-5">
+    	 		<div class="col-12">
+    	 			<div class="text-center">
+			        	<button class="brand btn btn-primary filter-button" data-filter="all">Tout</button>
+			        	<button class="brand btn btn-default filter-button" data-filter="a2">A2</button>
+			        	<button class="brand btn btn-default filter-button" data-filter="honda">Honda</button>
+			        	<button class="brand btn btn-default filter-button" data-filter="kawasaki">Kawasaki</button>
+			        	<button class="brand btn btn-default filter-button" data-filter="ktm">Ktm</button>
+			        	<button class="brand btn btn-default filter-button" data-filter="suzuki">Suzuki</button>
+			        	<button class="brand btn btn-default filter-button" data-filter="triumph">Triumph</button>
+			        	<button class="brand btn btn-default filter-button" data-filter="yamaha">Yamaha</button>
+			    	</div>
+    	 		</div>
+    	 	</div>
 
-		<div class="ml-2">
-        	<button class="brand btn btn-primary filter-button" data-filter="all">Tout</button>
-        	<button class="brand btn btn-default filter-button" data-filter="a2">A2</button>
-        	<button class="brand btn btn-default filter-button" data-filter="honda">Honda</button>
-        	<button class="brand btn btn-default filter-button" data-filter="kawasaki">Kawasaki</button>
-        	<button class="brand btn btn-default filter-button" data-filter="ktm">Ktm</button>
-        	<button class="brand btn btn-default filter-button" data-filter="suzuki">Suzuki</button>
-        	<button class="brand btn btn-default filter-button" data-filter="triumph">Triumph</button>
-        	<button class="brand btn btn-default filter-button" data-filter="yamaha">Yamaha</button>
+    	 	<div class="row">
+    	 		<div class="col-12 img-years">
+
+    	 			{% for announcement in announcements %}
+    	 				{% if announcement.IsActive %}
+    	 					{% if announcement.IsSold == false %}
+	    	 					<div class="item-1 h col-lg-4 col-md-6 mb-4 announcement-contenaire mr-2 filter">
+					                <a href="{{ path('announcement', {'id': announcement.id}) }}">
+					                	<img src="./../templates/imagesmotos/{{ asset(announcement.Image1) |split('/')|last }}" alt="Image" class="img-fluid">
+					                </a>
+					                <div class="item-1-contents">
+					                  <a class="card-announcement" href="{{ path('announcement', {'id': announcement.id}) }}">
+					                  	<h3>{{ announcement.Title }}</h3>
+					                  </a>
+					                  <ul>
+					                    <li class="d-flex"><span>Permis A2</span> <span class="price ml-auto">{{announcement.IsPermisA2 ? 'Oui' : 'Non'}}</span>
+	                        			<li class="d-flex"><span>Cylindrée</span> <span class="price ml-auto">{{announcement.Cylindrical}}</span></li>
+	                        			<li class="d-flex"><span>Kilomètres</span> <span class="price ml-auto">{{announcement.Km}}</span></li>
+	                        			<li class="d-flex"><span>Prix</span> <span class="price ml-auto">{{announcement.Price}}€</span></li>
+					                  </ul>
+					                </div>
+				              	</div>
+				              {% else %}
+				              	<div class="item-1 h col-lg-4 col-md-6 mb-4 announcement-contenaire mr-2">
+					                <img src="./../templates/imagesmotos/{{ asset(announcement.Image1) |split('/')|last }}" alt="Image" class="img-fluid">
+					                <div class="item-1-contents">
+					                  <h3>{{ announcement.Title }}</h3>
+					                  <span class="year-sold">
+					                  	<span>Vendu</span>
+					                  </span>
+					                </div>
+				              	</div>
+			              	{% endif %}
+    	 				{% endif %}	
+    	 			{% endfor %}	
+
+    	 			
+
+		            
+
+	    	 	</div>
+    	 	</div>
     	</div>
-
-		<div class="row">
-
-			{% for announcement in announcements %}
-				{% if announcement.IsActive %}
-					<div class="col-lg-4 col-md-6 mb-4 filter {{ (announcement.IsPermisA2) ? 'a2' : '' }} {{ announcement.Title|split(' ')[0]|lower }}">
-						<div class="card h-100">
-							<!--http://placehold.it/700x400-->
-							{% if announcement.IsSold %}
-								<span class="notify-badge">Vendu</span>
-								<img class="card-img-top" src="../../templates/imagesmotos/{{ asset(announcement.Image1) |split('/')|last }}" alt="">
-							{% elseif announcement.IsSold == false %}
-								<a href="{{ path('announcement', {'id': announcement.id}) }}">
-									<img class="card-img-top" src="../../templates/imagesmotos/{{ asset(announcement.Image1) |split('/')|last }}" alt="">
-								</a>
-							{% endif %}
-							
-							<div class="card-body">
-								<h4 class="card-title">
-								{% if announcement.IsSold %}
-									<span class="card-announcement" href="{{ path('announcement', {'id': announcement.id}) }}">{{announcement.Title}} {{announcement.IsPermisA2 ? 'Permis A2' : ''}}</span>
-								{% elseif announcement.IsSold == false %}
-									<a class="card-announcement" href="{{ path('announcement', {'id': announcement.id}) }}">{{announcement.Title}} {{announcement.IsPermisA2 ? 'Permis A2' : ''}}</a>
-								{% endif %}
-								</h4>
-								
-								<h5>{{ (announcement.IsSold) ? "Vendu" : "Prix: "~announcement.Price~"€"}}</h5>
-								
-								<h5 class="card-text">{{ (announcement.IsSold) ? "" : "KM: "~announcement.Km }}</h5>
-							</div>
-							<div class="card-footer">
-								<small class="text-muted"></small>
-							</div>
-						</div>
-					</div>
-
-				{% endif %}
-			{% endfor %}
-
-		</div>
-	</div>
+    </div>
 {% endblock %}
