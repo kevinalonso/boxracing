@@ -2,17 +2,26 @@
 
 {% block body %}
 
-	<div class="container mt-5 mb-5">
+	<div class="ftco-blocks-cover-1">
+      <div class="ftco-cover-1 innerpage overlay" style="background-image: url('http://localhost/boxracing/templates/images/static/1.jpeg')">
+        <div class="container">
+          <div class="row align-items-center justify-content-center">
+            <div class="col-lg-6 text-center">
+            	<h1 class="mb-4" data-aos="fade-up" data-aos-delay="100">{{static[0].Category.Name}}</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-		<div class="card">
-			<div class="container">
-				<div class="wrapper row">
-					<span class="col-12 ml-2">{{static[0].Content | raw }}</span>
-				</div>
-			</div>
-		</div>
-
-	</div>
-
-
+    <div class="site-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 blog-content">
+          	{{static[0].Content | raw }}
+          </div>
+      	</div>
+      </div>
+  	</div>
+  	
 {% endblock %}

@@ -60,8 +60,12 @@ class CategoryController extends AbstractController
         $static = $this->getDoctrine()->getRepository(StaticPage::class)
             ->getStaticFromCategory($id);
 
+        $categories = $this->getDoctrine()->getRepository(Category::class)
+            ->allCategories();
+
         return $this->render('staticpage.html.twig', [
-            'static' => $static
+            'static' => $static,
+            'categories' => $categories
         ]);
     }
 }
