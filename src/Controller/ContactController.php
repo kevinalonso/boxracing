@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use App\Entity\Category;
 
 class ContactController extends AbstractController
 {
@@ -16,7 +17,12 @@ class ContactController extends AbstractController
 	*/
 	public function contact(): Response
     {
-        return $this->render('contact.html.twig', []);
+        $categories = $this->getDoctrine()->getRepository(Category::class)
+            ->allCategories();
+
+        return $this->render('contact.html.twig', [
+            'categories' => $categories
+        ]);
     }
 
     /** 
