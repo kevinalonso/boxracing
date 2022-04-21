@@ -34,6 +34,11 @@ class Category
     private $IsStatic;
 
     /**
+     * @ORM\Column(type="boolean")
+     */
+    private $IsTopMenu;
+
+    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Announcement", mappedBy="Category")
      */
     private $Announcements;
@@ -88,6 +93,18 @@ class Category
     public function setIsStatic(bool $IsStatic): self
     {
         $this->IsStatic = $IsStatic;
+
+        return $this;
+    }
+
+    public function getIsTopMenu(): ?bool
+    {
+        return $this->IsTopMenu;
+    }
+
+    public function setIsTopMenu(bool $IsTopMenu): self
+    {
+        $this->IsTopMenu = $IsTopMenu;
 
         return $this;
     }

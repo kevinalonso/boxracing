@@ -44,7 +44,7 @@
 					                </a>
 					                <div class="item-1-contents">
 					                  <a class="card-announcement" href="{{ path('announcement', {'id': announcement.id}) }}">
-					                  	<h3>{{ announcement.Title }}</h3>
+					                  	<h3 class="h3-annoucement">{{ announcement.Title }}</h3>
 					                  </a>
 					                  <ul>
 					                    <li class="d-flex"><span>Permis A2</span> <span class="price ml-auto">{{announcement.IsPermisA2 ? 'Oui' : 'Non'}}</span>
@@ -58,7 +58,7 @@
 				              	<div class="item-1 h col-lg-4 col-md-6 mb-4 announcement-contenaire mr-2">
 					                <img src="./../templates/imagesmotos/{{ asset(announcement.Image1) |split('/')|last }}" alt="Image" class="img-fluid">
 					                <div class="item-1-contents">
-					                  <h3>{{ announcement.Title }}</h3>
+					                  <h3 class="h3-annoucement">{{ announcement.Title }}</h3>
 					                  <span class="year-sold">
 					                  	<span>Vendu</span>
 					                  </span>

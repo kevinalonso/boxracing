@@ -37,6 +37,8 @@
 		    <link rel="stylesheet" href="http://localhost/boxracing/templates/fonts/flaticon/font/flaticon.css">
 		    <link rel="stylesheet" href="http://localhost/boxracing/templates/style/aos.css">
 
+		    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 		    <!-- MAIN CSS -->
 		    <link rel="stylesheet" href="http://localhost/boxracing/templates/style/style.css">
         	
@@ -77,7 +79,7 @@
 				                  <li class="active"><a href="{{ path('index') }}" class="nav-link">Accueil</a></li>
 				                  {% if categories|default %}
 					                  {% for category in categories %}
-							              {% if category.IsActive %}
+							              {% if category.IsActive and category.IsTopMenu %}
 							                {% if category.IsStatic %}
 							                  <li><a href="{{ path('static', {'id': category.id}) }}" class="nav-link">{{category.Name}}</a></li>
 							                {% else %}
@@ -99,27 +101,13 @@
 
 	        {% endblock %}
 
-			<!--<footer class="footer py-5 bg-dark mt-5">
-				<div class="container">
-					<a class="btn btn-social-icon btn-twitter" href="{{ path('contact') }}">
-						<span class="fa fa-envelope" aria-hidden="true"></span>
-					</a>
-					<a class="btn btn-social-icon btn-facebook" href="https://www.facebook.com/Box-Racing-1582216218709761/?ref=br_rs">
-						<span class="fa fa-facebook"></span>
-					</a>
-					<a class="btn btn-social-icon btn-instagram" href="https://www.instagram.com/boxracingmoto/">
-						<span class="fa fa-instagram"></span>
-					</a>
-				  	<p class="m-0 text-center text-white">Copyright &copy; Box Racing 2020</p>
-				</div>
-			</footer>-->
 			 <footer class="site-footer">
 		        <div class="container">
 		          <div class="row">
 		            <div class="col-lg-3">
 		              <img src="http://localhost/boxracing/templates/images/boxracing.png" alt="Image" class="img-fluid mb-5">
 		              <h2 class="footer-heading mb-3">Qui sommes nous ?</h2>
-		                  <p>BoxRacing est un garage moto fondé en 2016. Spécialisé dans la préparation moto, entretien et réparation. Nous vous conseillerons au mieu afin de vous satisfaire </p>
+		                  <p>BoxRacing est un garage moto fondé en 2016. Spécialisé dans la préparation moto, entretien et réparation. Nous vous conseillerons au mieux afin de vous satisfaire </p>
 		            </div>
 		            <div class="col-lg-8 ml-auto">
 		              <div class="row">
@@ -142,10 +130,10 @@
 		                <div class="col-lg-6">
 		                  <h2 class="footer-heading mb-4">Réseaux sociaux</h2>
 		                  
-		                    <a class="btn btn-social-icon btn-facebook" href="https://www.facebook.com/Box-Racing-1582216218709761/?ref=br_rs">
+		                    <a class="btn btn-spec-social btn-social-icon btn-facebook" href="https://www.facebook.com/Box-Racing-1582216218709761/?ref=br_rs">
 								<span class="fa fa-facebook"></span>
 							</a>
-							<a class="btn btn-social-icon btn-instagram" href="https://www.instagram.com/boxracingmoto/">
+							<a class="btn btn-spec-social btn-social-icon btn-instagram" href="https://www.instagram.com/boxracingmoto/">
 								<span class="fa fa-instagram"></span>
 							</a>
 		                  
@@ -159,7 +147,7 @@
 		              <div class="border-top pt-5">
 		                <p>
 		              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-		              Copyright &copy;<script>document.write(new Date().getFullYear());</script> BoxRacing
+		              Copyright &copy;<script>document.write(new Date().getFullYear());</script> ALONSO Kévin
 		              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 		              </p>
 		              </div>

@@ -16,6 +16,7 @@ easy_admin:
                     - 'Name'
                     - 'IsActive'
                     - 'IsStatic'
+                    - 'IsTopMenu'
 
         Announcement:
             class: App\Entity\Announcement
