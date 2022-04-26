@@ -2,6 +2,10 @@
 
 {% block body %}
 
+  <div class="cookies-spec">
+      {{ render_esi(path('ch_cookie_consent.show_if_cookie_consent_not_set', { 'locale' : 'fr' })) }}
+  </div>
+
   <div class="ftco-blocks-cover-1">
     <div class="site-section-cover overlay" data-stellar-background-ratio="0.5" style="background-image: url('http://localhost/boxracing/templates/images/caroussel/2.jpg')">
       <div class="container">

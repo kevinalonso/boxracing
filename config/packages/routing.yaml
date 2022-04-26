@@ -5,3 +5,15 @@ framework:
         # Configure how to generate URLs in non-HTTP contexts, such as CLI commands.
         # See https://symfony.com/doc/current/routing.html#generating-urls-in-commands
         #default_uri: http://localhost
+ch_cookie_consent: 
+  theme: 'dark' # light, dark
+  categories: 
+    - 'analytics'
+    - 'tracking'
+    - 'social_media'
+    - 'marketing'
+  use_logger: true #Logs user actions to database
+  position: 'top' # top, bottom
+  simplified: false # When set to true the user can only deny or accept all cookies at once
+  http_only: true # Sets HttpOnly on cookies
+  csrf_protection: true # The cookie consent form is csrf protected or not
