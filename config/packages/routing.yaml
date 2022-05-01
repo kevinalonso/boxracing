@@ -7,11 +7,8 @@ framework:
         #default_uri: http://localhost
 ch_cookie_consent: 
   theme: 'dark' # light, dark
-  categories: 
-    - 'analytics'
+  categories:
     - 'tracking'
-    - 'social_media'
-    - 'marketing'
   use_logger: true #Logs user actions to database
   position: 'top' # top, bottom
   simplified: false # When set to true the user can only deny or accept all cookies at once
