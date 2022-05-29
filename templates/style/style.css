@@ -5,6 +5,14 @@
   max-width: 30%;
 }
 
+@media (max-width: 768px){
+.announcement-contenaire{
+    display: inline-block;
+    padding: 0px;
+    max-width: 100%;
+  }
+}
+
 .img-years {
   position: relative;
   display: block; 
