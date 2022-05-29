@@ -7,4 +7,6 @@ swiftmailer:
     encryption: ssl
     port: 465
     host: ssl0.ovh.net
-    spool: { type: 'memory' }
+    spool: 
+      type: file
+      path: '%kernel.project_dir%/var/spool'
