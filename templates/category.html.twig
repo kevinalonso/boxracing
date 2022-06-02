@@ -33,7 +33,7 @@
     	 	</div>
 
     	 	<div class="row">
-    	 		<div class="col-12 img-years">
+    	 		<div class="col-12 img-years announcement-col">
 
     	 			{% for announcement in announcements %}
     	 				{% if announcement.IsActive %}
@@ -42,7 +42,7 @@
 					                <a href="{{ path('announcement', {'id': announcement.id}) }}">
 					                	<img src="./../templates/imagesmotos/{{ asset(announcement.Image1) |split('/')|last }}" alt="Image" class="img-fluid">
 					                </a>
-					                <div class="item-1-contents">
+					                <div class="item-1-contents announcement-text">
 					                  <a class="card-announcement" href="{{ path('announcement', {'id': announcement.id}) }}">
 					                  	<h3 class="h3-annoucement">{{ announcement.Title }}</h3>
 					                  </a>
@@ -57,7 +57,7 @@
 				              {% else %}
 				              	<div class="item-1 h col-lg-4 col-md-6 mb-4 announcement-contenaire mr-2 filter {{ (announcement.IsPermisA2) ? 'a2' : '' }} {{ announcement.Title|split(' ')[0]|lower }}">
 					                <img src="./../templates/imagesmotos/{{ asset(announcement.Image1) |split('/')|last }}" alt="Image" class="img-fluid">
-					                <div class="item-1-contents">
+					                <div class="item-1-contents announcement-text">
 					                  <h3 class="h3-annoucement">{{ announcement.Title }}</h3>
 					                  <span class="year-sold">
 					                  	<span>Vendu</span>
