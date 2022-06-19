@@ -11,8 +11,8 @@ function sendMailClick(){
 	var formData = new FormData();
 	formData.append('email', $("#email").val());
 	formData.append('name', $("#name").val());
-	formData.append('subject', $("#subject").val());
-	formData.append('message', $("#message").val());
+	formData.append('obj', $("#subject").val());
+	formData.append('msg', $("#message").val());
 	formData.append('pj', $('#pj').prop("files")[0])
 
 	if (email !== null && name !== null && obj !== null && msg !== null ) {

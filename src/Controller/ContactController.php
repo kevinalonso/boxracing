@@ -36,25 +36,41 @@ class ContactController extends AbstractController
         $obj = $request->request->get('obj');
         $msg = $request->request->get('msg');
 
-        $destination = $this->getParameter('kernel.project_dir').'/templates/attachment';
-        $extension = pathinfo($_FILES['pj']["name"], PATHINFO_EXTENSION);
-        $fileName = basename($_FILES['pj']["name"], ".".$extension);
+        dump($obj);
+        dump($request->files->get('pj'));
 
-        $uploadedFile = $_FILES['pj']["tmp_name"];
-        move_uploaded_file($uploadedFile, $destination."/".$request->files->get('pj')->getFilename());
-        rename($destination."/".$request->files->get('pj')->getFilename(), $destination."/".$fileName.".".$extension);
+        
+        if ($request->files->get('pj') != null)
+        {
+            $destination = $this->getParameter('kernel.project_dir').'/templates/attachment';
+            $extension = pathinfo($_FILES['pj']["name"], PATHINFO_EXTENSION);
+            $fileName = basename($_FILES['pj']["name"], ".".$extension);
 
-        $message = (new \Swift_Message($obj))
+            $uploadedFile = $_FILES['pj']["tmp_name"];
+            move_uploaded_file($uploadedFile, $destination."/".$request->files->get('pj')->getFilename());
+            rename($destination."/".$request->files->get('pj')->getFilename(), $destination."/".$fileName.".".$extension);
+
+            $message = (new \Swift_Message($obj))
             ->setFrom($email)
-            ->setTo('k.alonso@iia-lava.fr')
+            ->setTo('contact@box-racing.fr')
             ->setBody($msg)
             ->attach(\Swift_Attachment::fromPath($destination."/".$fileName.".".$extension));
 
-        $mailer->send($message);
-        
-        //Supprime le fichier une fois le mail envoyé
-        unlink($destination."/".$fileName.".".$extension);
-        
+            $mailer->send($message);
+            //Supprime le fichier une fois le mail envoyé
+            unlink($destination."/".$fileName.".".$extension);
+        }
+        else
+        {
+            
+             $message = (new \Swift_Message($obj))
+            ->setFrom($email)
+            ->setTo('contact@box-racing.fr')
+            ->setBody($msg);
+
+            $mailer->send($message);
+        }
+
         return new JsonResponse(array(
             'status' => 'OK',
         ),
