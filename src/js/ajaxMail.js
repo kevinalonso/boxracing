@@ -6,20 +6,23 @@ function sendMailClick(){
 	var name = $("#name").val();
 	var obj = $("#subject").val();
 	var msg = $("#message").val();
-	var pj = $("#pj").val();
+	var pj = $('#pj').prop("files")[0];
+
+	var formData = new FormData();
+	formData.append('email', $("#email").val());
+	formData.append('name', $("#name").val());
+	formData.append('subject', $("#subject").val());
+	formData.append('message', $("#message").val());
+	formData.append('pj', $('#pj').prop("files")[0])
 
 	if (email !== null && name !== null && obj !== null && msg !== null ) {
 
 		$.ajax({
-	    type: "POST",
-	    url: "http://localhost/boxracing/public/sendmail",
-	    data: {
-		    	email: email,
-	            name: name,
-	            obj: obj,
-	            msg: msg,
-	            pj: pj
-	    	}
+	    	type: "POST",
+	    	url: "http://localhost/boxracing/public/sendmail",
+	    	data: formData,
+	    	processData: false,
+			contentType: false
 		})
 		.done(function(data){
 
