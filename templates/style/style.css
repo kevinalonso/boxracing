@@ -26,6 +26,10 @@
     padding: 0px;
     max-width: 100%;
   }
+
+  .announcement-text{
+    height: auto;
+   }
 }
 
 @media (min-width:550px) and (max-width: 768px){
@@ -35,7 +39,7 @@
   }
 }
 
-@media (max-width: 320px){
+@media (max-width: 768px){
   .modal-dialog {
     max-width: 100%;
     margin-top: 50%;
